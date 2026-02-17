@@ -1,0 +1,65 @@
+﻿<Window x:Class="WpfAppXMLBioPlanet.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="WpfAppXMLBioPlanet"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
+        WindowStyle="SingleBorderWindow">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Pasek przycisków -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="10">
+            <Button Content="Wczytaj XML"
+                    Command="{Binding WczytajXmlCommand}"
+                    Width="130"
+                    Margin="0,0,10,0"/>
+
+            <Button Content="Reset danych"
+                    Command="{Binding ResetCommand}"
+                    Width="130"/>
+        </StackPanel>
+
+        <!-- Tabela -->
+        <DataGrid Grid.Row="1"
+          ItemsSource="{Binding Produkty}"
+          AutoGenerateColumns="False"
+          IsReadOnly="True"
+          CanUserAddRows="False"
+          Margin="10">
+
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header="Nazwa"
+                            Binding="{Binding Nazwa}" />
+
+                <DataGridTextColumn Header="Kraj"
+                            Binding="{Binding Kraj}" />
+
+                <DataGridTextColumn Header="Zmiana kraju"
+                            Binding="{Binding Zmiana}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Style.Triggers>
+
+                                <!-- Jeśli jest zmiana -->
+                                <DataTrigger Binding="{Binding Zmiana}" Value="Zmieniono">
+                                    <Setter Property="Foreground" Value="Red"/>
+                                    <Setter Property="FontWeight" Value="Bold"/>
+                                </DataTrigger>
+
+                            </Style.Triggers>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+            </DataGrid.Columns>
+
+        </DataGrid>
+
+    </Grid>
+</Window>
