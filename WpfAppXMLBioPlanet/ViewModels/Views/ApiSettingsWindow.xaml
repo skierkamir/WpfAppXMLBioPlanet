@@ -1,0 +1,39 @@
+﻿<Window x:Class="WpfAppXMLBioPlanet.Views.ApiSettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Ustawienia API" Height="180" Width="400" WindowStartupLocation="CenterOwner">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Adres API -->
+            <RowDefinition Height="Auto"/>
+            <!-- Klucz API -->
+            <RowDefinition Height="Auto"/>
+            <!-- Adres API magazynowego -->
+            <RowDefinition Height="Auto"/>
+            <!-- Przyciski -->
+            <RowDefinition Height="*"/>
+            <!-- Luźne miejsce / wypełnienie -->
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="170"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Adres API:" VerticalAlignment="Center"/>
+        <TextBox x:Name="AdresBox" Grid.Column="1" Margin="5,2"/>
+
+        <TextBlock Text="Klucz API:" Grid.Row="1" VerticalAlignment="Center"/>
+        <TextBox x:Name="KluczBox" Grid.Row="1" Grid.Column="1" Margin="5,2"/>
+
+        <TextBlock Text="Adres API magazynowego:" Grid.Row="2" VerticalAlignment="Center"/>
+        <TextBox x:Name="AdresMagazynBox" Grid.Row="2" Grid.Column="1" Margin="5,2"/>
+
+
+        <StackPanel Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+            <Button Content="Zapisz" Width="75" Margin="5" Click="Save_Click"/>
+            <Button Content="Anuluj" Width="75" Margin="5" Click="Cancel_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
